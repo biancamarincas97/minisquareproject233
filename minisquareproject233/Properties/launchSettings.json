@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "Compiler": {
+      "commandName": "Project",
+      "commandLineArgs": "example1.sq",
+      "workingDirectory": "C:\\Users\\bluew\\OneDrive\\Desktop\\resit lang and comp\\coursework NEW\\program\\minisquareproject233"
+    }
+  }
+}
