@@ -157,12 +157,12 @@ namespace Compiler.Tokenization
                 }
                 else
                 {
-                    return TokenType.Error;         // howver, if the reader only reads one = then return an Error token type
+                    return TokenType.Error;         // however, if the reader only reads one = then return an Error token type
                 }
 
             }
 
-            else if (Reader.Current == ';')
+            else if (Reader.Current == ';') 
             {
                 TakeIt();
                 return TokenType.Semicolon;
@@ -204,17 +204,17 @@ namespace Compiler.Tokenization
                 return TokenType.RightSquareBracket;
             }
 
-            else if (Reader.Current == default(char))
-            {
-                TakeIt();
-                return TokenType.EndOfText;
-            }
-
-            else if (IsNop())           
+            else if (IsNop())
             {
                 TakeIt();
                 return TokenType.Nop;
             }
+
+            else if (Reader.Current == default(char))
+            {
+                TakeIt();
+                return TokenType.EndOfText;
+            }          
 
             else
             {

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using static System.Console;
+using Compiler.Nodes;
 
 namespace Compiler
 {
@@ -44,18 +45,26 @@ namespace Compiler
             WriteLine("Done");
 
 
-            // Parse
+            // Old Parser
+            //Write("Parsing...");
+            //Parser.Parse(tokens);
+            //if (Reporter.HasErrors) return;
+            //WriteLine("Done");
+
+            //New Parser
             Write("Parsing...");
-            Parser.Parse(tokens);
+            ProgramNode tree = Parser.Parse(tokens);              
             if (Reporter.HasErrors) return;
             WriteLine("Done");
 
+            //Generate Tree
+            WriteLine(TreePrinter.ToString(tree));                
 
         }
 
         private void WriteFinalMessage()
         {
-            WriteLine("Compilation completed!");
+            WriteLine("Compilation completed successfully!");
         }
 
 

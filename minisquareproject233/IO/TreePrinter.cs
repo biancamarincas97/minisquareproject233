@@ -1,4 +1,5 @@
 ﻿using Compiler.Tokenization;
+using Compiler.Nodes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace Compiler.IO
     /// <summary>
     /// Printer for abstract syntax trees
     /// </summary>
-   /* public static class TreePrinter
+    public static class TreePrinter
     {
         /// <summary>
         /// Converts the subtree belonging to a node to a string
@@ -194,9 +195,15 @@ namespace Compiler.IO
                 case WhileCommandNode whileCommand:
                     return NodeToString(lastChild, whileCommand, whileCommand.Expression, whileCommand.Command);
 
+                case RepeatCommandNode repeatCommand:
+                    return NodeToString(lastChild, repeatCommand, repeatCommand.RepeatCommand, repeatCommand.Expression);
+                
+                case DoIfCommandNode doIfCommand:
+                    return NodeToString(lastChild, doIfCommand, doIfCommand.DoCommand, doIfCommand.Expression, doIfCommand.ElseCommand);
+
                 // Declarations
                 case ConstDeclarationNode constDeclaration:
-                    return NodeToString(lastChild, constDeclaration, constDeclaration.Identifier, constDeclaration.Expression);
+                    return NodeToString(lastChild, constDeclaration, constDeclaration.TypeDenoter ,constDeclaration.Identifier, constDeclaration.Expression);
 
                 case SequentialDeclarationNode sequentialDeclaration:
                     return NodeToString(lastChild, sequentialDeclaration, sequentialDeclaration.Declarations.ToArray());
@@ -219,6 +226,9 @@ namespace Compiler.IO
 
                 case UnaryExpressionNode unaryExpression:
                     return NodeToString(lastChild, unaryExpression, unaryExpression.Op, unaryExpression.Expression);
+                
+                case CallExpressionNode callExpression:
+                    return NodeToString(lastChild, callExpression, callExpression.Identifier, callExpression.Parameter);
 
                 // Parameters
                 case BlankParameterNode blankParameter:
@@ -325,5 +335,5 @@ namespace Compiler.IO
                        .Select(property => (Token)property.GetValue(node))
                        .FirstOrDefault();
         }
-    } */
+    } 
 }
