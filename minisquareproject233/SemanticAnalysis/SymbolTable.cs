@@ -59,11 +59,11 @@ namespace Compiler.SemanticAnalysis
         public bool Enter(string symbol, IDeclarationNode declaration)
         {
 
-            if (ReservedWords.Contains(symbol))             // checking to see whether the symbol is in the list of reserved words
-            {
-                ErrorReporter.ReportError($"{symbol} cannot be used as an identifier!");
-                return false;                               // if that's the case then return false
-            }
+            //if (ReservedWords.Contains(symbol))             // checking to see whether the symbol is in the list of reserved words
+            //{
+            //    ErrorReporter.ReportError($"{symbol} cannot be used as an identifier!");
+            //    return false;                               // if that's the case then return false
+            //}
 
             Debugger.Write($"Adding {symbol} to the symbol table");
             Dictionary<string, IDeclarationNode> currentScope = Scopes.Peek();

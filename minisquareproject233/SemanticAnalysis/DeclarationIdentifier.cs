@@ -88,11 +88,11 @@ namespace Compiler.SemanticAnalysis
         {
             PerformIdentification(assignCommand.Identifier);
 
-            if (!(assignCommand.Identifier.Declaration is VarDeclarationNode))      // check the type of identifier declaration and see if it's of type var node
-            {
-                Reporter.ReportError($"Identifier is not a variable!");
-                return;
-            }
+            //if (!(assignCommand.Identifier.Declaration is VarDeclarationNode))      // check the type of identifier declaration and see if it's of type var node
+            //{
+            //    Reporter.ReportError($"Identifier is not a variable!");
+            //    return;
+            //}
 
             PerformIdentification(assignCommand.Expression);
         }
@@ -319,11 +319,11 @@ namespace Compiler.SemanticAnalysis
         {
             IDeclarationNode declaration = SymbolTable.Retrieve(identifier.IdentifierToken.Spelling);       // retrieving the declaration 
 
-            if(declaration == null)                             // if the deckaration is null then the identifier hasn't been yet declared
-            {
-                Reporter.ReportError($"The identifier {identifier.IdentifierToken.Spelling} has not been declared!");
-                return;
-            }
+            //if(declaration == null)                             // if the deckaration is null then the identifier hasn't been yet declared
+            //{
+            //    Reporter.ReportError($"The identifier {identifier.IdentifierToken.Spelling} has not been declared!");
+            //    return;
+            //}
 
             identifier.Declaration = declaration;
         }

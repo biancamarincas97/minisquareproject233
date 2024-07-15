@@ -73,7 +73,7 @@ namespace Compiler.Tokenization
                     Reader.MoveNext();
                 }
                 char previousChar = Reader.Current;
-                Debugger.Write($" current reader chara: {previousChar}");
+                //Debugger.Write($" current reader chara: {previousChar}");
             }
         }
 
