@@ -1,6 +1,7 @@
 ﻿using Compiler.IO;
 using Compiler.Tokenization;
 using Compiler.SyntacticAnalysis;
+using Compiler.SemanticAnalysis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,8 @@ namespace Compiler
 
         public Parser Parser { get; }
 
+        public DeclarationIdentifier Identifier { get; }
+
         public Compiler(string inputFile)
         {
 
@@ -31,7 +34,7 @@ namespace Compiler
             Reader = new FileReader(inputFile);
             Tokenizer = new Tokenizer(Reader, Reporter);
             Parser = new Parser(Reporter);
-
+            Identifier = new DeclarationIdentifier(Reporter);
         }
 
 
@@ -44,16 +47,15 @@ namespace Compiler
             if (Reporter.HasErrors) return;
             WriteLine("Done");
 
-
-            // Old Parser
-            //Write("Parsing...");
-            //Parser.Parse(tokens);
-            //if (Reporter.HasErrors) return;
-            //WriteLine("Done");
-
-            //New Parser
+            //Parser
             Write("Parsing...");
             ProgramNode tree = Parser.Parse(tokens);              
+            if (Reporter.HasErrors) return;
+            WriteLine("Done");
+
+            // Identify
+            Write("Identifying...");
+            Identifier.PerformIdentification(tree);
             if (Reporter.HasErrors) return;
             WriteLine("Done");
 

@@ -1,4 +1,4 @@
-﻿using static Compiler.CodeGeneration.SquareAbstractMachine;
+﻿using static Compiler.CodeGeneration.TriangleAbstractMachine;
 
 namespace Compiler.Nodes
 {

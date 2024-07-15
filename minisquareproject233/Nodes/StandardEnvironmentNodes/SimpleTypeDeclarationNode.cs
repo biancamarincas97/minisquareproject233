@@ -1,4 +1,4 @@
-﻿using static Compiler.CodeGeneration.SquareAbstractMachine;
+﻿using static Compiler.CodeGeneration.TriangleAbstractMachine;
 
 namespace Compiler.Nodes
 {
@@ -25,14 +25,14 @@ namespace Compiler.Nodes
         /// <summary>
         /// The type on the target machine that this type should be represented as
         /// </summary>
-        public CodeGeneration.SquareAbstractMachine.Type? TargetType { get; }
+        public CodeGeneration.TriangleAbstractMachine.Type? TargetType { get; }
 
         /// <summary>
         /// Creates a new type declaration node
         /// </summary>
         /// <param name="name">The name of the type</param>
         /// <param name="targetType">The type on the target machine that this type should be represented as</param>
-        public SimpleTypeDeclarationNode(string name, CodeGeneration.SquareAbstractMachine.Type? targetType = null)
+        public SimpleTypeDeclarationNode(string name, CodeGeneration.TriangleAbstractMachine.Type? targetType = null)
         {
             Name = name;
             TargetType = targetType;
